@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener</title>
+</head>
+<body>
+  <h1>URL Shortener</h1>
+  <form id="urlForm">
+    <label for="originalUrl">Enter URL:</label>
+    <input type="text" id="originalUrl" name="originalUrl" required>
+    <button type="submit">Shorten URL</button>
+  </form>
+  <div id="shortenedUrl"></div>
+
+  <script>
+    document.getElementById('urlForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      
+      const originalUrl = document.getElementById('originalUrl').value;
+      const response = await fetch('http://ec2-3-82-97-232.compute-1.amazonaws.com:3000/shorten', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ originalUrl })
+      });
+
+      const data = await response.json();
+      document.getElementById('shortenedUrl').innerText = data.shortenedUrl;
+    });
+  </script>
+</body>
+</html>

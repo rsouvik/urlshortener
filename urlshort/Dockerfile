@@ -4,8 +4,15 @@ FROM node:14
 # Set the working directory in the container
 WORKDIR /app
 
+
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+
+# Install TypeScript and ts-node globally
+RUN npm install -g typescript ts-node
+
+# Set up the TypeScript compiler options
+COPY tsconfig.json .
 
 # Install dependencies
 RUN npm install
@@ -13,8 +20,13 @@ RUN npm install
 # Copy all source code to the container
 COPY . .
 
-# Expose port 3000 (assuming your Node.js server runs on port 3000)
+COPY ./public /app/public
+
+# Compile TypeScript code to JavaScript
+RUN tsc
+
+# Expose port 3000
 EXPOSE 3000
 
-# Command to run the Node.js application
-CMD [ "node", "server.ts" ]
+# Command to run the Node.js application using ts-node
+CMD ["node", "dist/server.js"]

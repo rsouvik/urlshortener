@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .short-url {
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>URL Shortener</h1>
+    <form id="urlForm">
+        <label for="originalUrl">Enter URL:</label>
+        <input type="text" id="originalUrl" name="originalUrl" required>
+        <button type="submit">Shorten URL</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+
+        document.getElementById('urlForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const originalUrl = document.getElementById('originalUrl').value;
+            const response = await fetch('http://ec2-3-82-97-232.compute-1.amazonaws.com:3000/shorten', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ originalUrl })
+            });
+
+            const data = await response.json();
+            document.getElementById('result').innerHTML = `Shortened URL: <span class="short-url">${data.shortenedUrl}</span>`;
+        });
+    </script>
+</body>
+
+</html>

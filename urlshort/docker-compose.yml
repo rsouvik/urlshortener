@@ -7,14 +7,18 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
-    links:
-      - postgres
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: cipherdba 
+      POSTGRES_DB: postgres 
+      POSTGRES_HOST: ec2-44-203-160-144.compute-1.amazonaws.com 
+      SERVICE_HOST: ec2-3-82-97-232.compute-1.amazonaws.com
 
   postgres:
     image: postgres
     environment:
-      POSTGRES_USER: REDACTED 
-      POSTGRES_PASSWORD: REDACTED 
-      POSTGRES_DB: REDACTED 
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: cipherdba 
+      POSTGRES_DB: postgres 
     ports:
       - "5432:5432"
