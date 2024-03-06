@@ -8,17 +8,17 @@ services:
     depends_on:
       - postgres
     environment:
-      POSTGRES_USER: postgres 
-      POSTGRES_PASSWORD: cipherdba 
-      POSTGRES_DB: postgres 
-      POSTGRES_HOST: ec2-44-203-160-144.compute-1.amazonaws.com 
-      SERVICE_HOST: ec2-3-82-97-232.compute-1.amazonaws.com
+      POSTGRES_USER: REDACTED 
+      POSTGRES_PASSWORD: REDACTED 
+      POSTGRES_DB: REDACTED 
+      POSTGRES_HOST: REDACTED 
+      SERVICE_HOST: REDACTED 
 
   postgres:
     image: postgres
     environment:
-      POSTGRES_USER: postgres 
-      POSTGRES_PASSWORD: cipherdba 
-      POSTGRES_DB: postgres 
+      POSTGRES_USER: REDACTED 
+      POSTGRES_PASSWORD: REDACTED 
+      POSTGRES_DB: REDACTED 
     ports:
       - "5432:5432"
