@@ -4,6 +4,13 @@ url shortener
 Very basic url shortener. 
 1. Clone repo
 2. Set appropriate env in docker-compose.yml
+3. Create db tables in pg as such:
+   
+   CREATE TABLE urls (
+    id SERIAL PRIMARY KEY,
+    originalurl VARCHAR(255),
+    shorturl VARCHAR(10) UNIQUE
+);
 
 Then run,
 $ docker compose up
