@@ -13,8 +13,8 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: cipherdba 
-      POSTGRES_DB: postgres 
+      POSTGRES_USER: REDACTED 
+      POSTGRES_PASSWORD: REDACTED 
+      POSTGRES_DB: REDACTED 
     ports:
       - "5432:5432"

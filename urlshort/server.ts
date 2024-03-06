@@ -5,10 +5,10 @@ import shortid from 'shortid';
 import * as path from 'path';
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'ec2-44-203-160-144.compute-1.amazonaws.com',
-  database: 'postgres',
-  password: 'cipherdba',
+  user: 'redacted',
+  host: 'redacted',
+  database: 'redacted',
+  password: 'redacted',
   port: 5432,
 });
 
