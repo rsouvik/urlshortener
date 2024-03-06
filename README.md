@@ -1,6 +1,16 @@
 # urlshortener
 url shortener
 
+Very basic url shortener. 
+1. Clone repo
+2. Set appropriate env in docker-compose.yml
+
+Then run,
+$ docker compose up
+
+For backend, this uses pg instance. Make appropriate changes to index.html to run client. The following graphics show redirect to original url for an endpoint like localhost:3000/shortUrl
+
+
 ![image](https://github.com/rsouvik/urlshortener/assets/1316614/6ba4d67b-de7c-44fe-abd4-bd07c98cdad7)
 
 
